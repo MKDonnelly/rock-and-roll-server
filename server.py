@@ -10,15 +10,51 @@ def add_header(response):
     return response
 
 @app.route('/v1/bands')
-def bands_route():
+def bands():
     '''
     Returns a list of bands.
     '''
 
+    blackDog = {
+        'title': 'Black Dog',
+        'band': 'Led Zeppelin',
+        'rating': 3,
+    }
+
+    yellowLedbetter = {
+        'title': 'Yellow Ledbetter',
+        'band': 'Pearl Jam',
+        'rating': 4,
+    }
+
+    pretender = {
+        'title': 'The Pretender',
+        'band': 'Foo Fighters',
+        'rating': 2,
+    }
+
+    daughter = {
+        'title': 'Daughter',
+        'band': 'Pearl Jam',
+        'rating': 5,
+    }
+
     bands = [
-        {'name': 'Led Zeppelin'},
-        {'name': 'Pearl Jam'},
-        {'name': 'Foo Fighters'},
+        {
+          'id': 'led-zeppelin',
+          'name': 'Led Zeppelin',
+          'songs': [blackDog],
+        },
+        {
+          'id': 'pearl-jam',
+          'name': 'Pearl Jam',
+          'songs': [yellowLedbetter, daughter],
+        },
+        {
+          'id': 'foo-fighters',
+          'name': 'Foo Fighters',
+          'songs': [pretender],
+        },
     ]
 
     return jsonify(success=True, bands=bands)
